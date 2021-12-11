@@ -9,17 +9,19 @@
 /* Begin PBXBuildFile section */
 		1E5F682D27651D950016D4E9 /* CryptoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5F682C27651D950016D4E9 /* CryptoSwiftUIApp.swift */; };
 		1E5F682F27651D950016D4E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5F682E27651D950016D4E9 /* ContentView.swift */; };
-		1E5F683127651D960016D4E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E5F683027651D960016D4E9 /* Assets.xcassets */; };
 		1E5F683427651D960016D4E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E5F683327651D960016D4E9 /* Preview Assets.xcassets */; };
+		1E5F683C27651E240016D4E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E5F683B27651E240016D4E9 /* Assets.xcassets */; };
+		1E5F683F27651E6A0016D4E9 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5F683E27651E6A0016D4E9 /* Color+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1E5F682927651D950016D4E9 /* CryptoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E5F682C27651D950016D4E9 /* CryptoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoSwiftUIApp.swift; sourceTree = "<group>"; };
 		1E5F682E27651D950016D4E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		1E5F683027651D960016D4E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E5F683327651D960016D4E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1E5F683527651D960016D4E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E5F683B27651E240016D4E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../Downloads/Resources/Assets.xcassets; sourceTree = "<group>"; };
+		1E5F683E27651E6A0016D4E9 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +55,9 @@
 			isa = PBXGroup;
 			children = (
 				1E5F682C27651D950016D4E9 /* CryptoSwiftUIApp.swift */,
+				1E5F683D27651E600016D4E9 /* Extensions */,
 				1E5F682E27651D950016D4E9 /* ContentView.swift */,
-				1E5F683027651D960016D4E9 /* Assets.xcassets */,
+				1E5F683B27651E240016D4E9 /* Assets.xcassets */,
 				1E5F683527651D960016D4E9 /* Info.plist */,
 				1E5F683227651D960016D4E9 /* Preview Content */,
 			);
@@ -67,6 +70,14 @@
 				1E5F683327651D960016D4E9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1E5F683D27651E600016D4E9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1E5F683E27651E6A0016D4E9 /* Color+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E5F683427651D960016D4E9 /* Preview Assets.xcassets in Resources */,
-				1E5F683127651D960016D4E9 /* Assets.xcassets in Resources */,
+				1E5F683C27651E240016D4E9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E5F682F27651D950016D4E9 /* ContentView.swift in Sources */,
+				1E5F683F27651E6A0016D4E9 /* Color+Extension.swift in Sources */,
 				1E5F682D27651D950016D4E9 /* CryptoSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
