@@ -12,6 +12,7 @@
 		1E2484BB276605D000CBA203 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2484BA276605D000CBA203 /* Double+Extension.swift */; };
 		1E2484BD27660DDB00CBA203 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2484BC27660DDB00CBA203 /* HomeViewModel.swift */; };
 		1E3C3E1027675C3A001115B4 /* CoinDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3C3E0F27675C3A001115B4 /* CoinDataService.swift */; };
+		1E3C3E13276774DD001115B4 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3C3E12276774DD001115B4 /* NetworkingManager.swift */; };
 		1E5F682D27651D950016D4E9 /* CryptoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5F682C27651D950016D4E9 /* CryptoSwiftUIApp.swift */; };
 		1E5F682F27651D950016D4E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5F682E27651D950016D4E9 /* ContentView.swift */; };
 		1E5F683427651D960016D4E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E5F683327651D960016D4E9 /* Preview Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		1E2484BA276605D000CBA203 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		1E2484BC27660DDB00CBA203 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1E3C3E0F27675C3A001115B4 /* CoinDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataService.swift; sourceTree = "<group>"; };
+		1E3C3E12276774DD001115B4 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		1E5F682927651D950016D4E9 /* CryptoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E5F682C27651D950016D4E9 /* CryptoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoSwiftUIApp.swift; sourceTree = "<group>"; };
 		1E5F682E27651D950016D4E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		1E3C3E11276774BD001115B4 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1E3C3E12276774DD001115B4 /* NetworkingManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		1E5F682027651D950016D4E9 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				1E5F682C27651D950016D4E9 /* CryptoSwiftUIApp.swift */,
+				1E3C3E11276774BD001115B4 /* Utilities */,
 				1E5F683D27651E600016D4E9 /* Extensions */,
 				1E3C3E0E27675C0E001115B4 /* Services */,
 				1E5F684C276525270016D4E9 /* Models */,
@@ -248,6 +259,7 @@
 				1E5F683F27651E6A0016D4E9 /* Color+Extension.swift in Sources */,
 				1E5F6849276520FF0016D4E9 /* CircleButtonView.swift in Sources */,
 				1E2484B92766015100CBA203 /* PreviewProvider+Extension.swift in Sources */,
+				1E3C3E13276774DD001115B4 /* NetworkingManager.swift in Sources */,
 				1E5F682D27651D950016D4E9 /* CryptoSwiftUIApp.swift in Sources */,
 				1E5F684B2765231F0016D4E9 /* CircleButtonAnimationView.swift in Sources */,
 				1E2484BB276605D000CBA203 /* Double+Extension.swift in Sources */,
