@@ -21,6 +21,8 @@ struct HomeView: View {
             // content layer
             VStack {
                 homeHeader
+                
+                SearchBarView(searchText: $viewModel.searchText)
                 columnTitles
                 .font(.caption)
                 .foregroundColor(Color.theme.secondaryText)
