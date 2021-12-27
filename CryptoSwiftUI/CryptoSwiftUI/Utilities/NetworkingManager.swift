@@ -23,9 +23,10 @@ final class NetworkingManager {
             }
         }
     }
-    
+
     static func download(url: URL) -> AnyPublisher<Data, Error> {
-        URLSession.shared.dataTaskPublisher(for: url)
+        URLSession.shared.dataTaskPublisher(for: URLRequest(url: url))
+            .logRequest()
             .subscribe(on: DispatchQueue.global(qos: .default))
             .tryMap {
                 try handleURLResponse(

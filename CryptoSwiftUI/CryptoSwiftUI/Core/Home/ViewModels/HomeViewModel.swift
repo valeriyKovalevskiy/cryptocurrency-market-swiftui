@@ -9,61 +9,72 @@ import Foundation
 import Combine
 
 final class HomeViewModel: ObservableObject {
-    @Published var statistics: [StatisticModel] = [
-        StatisticModel(
-            title: "Title",
-            value: "Value",
-            percentageChange: 1
-        ),
-        
-        StatisticModel(
-            title: "Title",
-            value: "Value",
-            percentageChange: 1
-        ),
-        
-        StatisticModel(
-            title: "Title",
-            value: "Value",
-            percentageChange: -8
-        ),
-        
-        StatisticModel(
-            title: "Title",
-            value: "Value"
-        )
-    ]
-
+    @Published var statistics: [StatisticModel] = []
     @Published var allCoins: [CoinModel] = []
     @Published var portfolioCoins: [CoinModel] = []
     @Published var searchText: String = ""
     
-    private let dataService: CoinDataService
+    private let coinDataService: CoinDataService
+    private let marketDataService: MarketDataService
     private var cancellables = Set<AnyCancellable>()
     
     init(
-        dataService: CoinDataService = CoinDataService()
+        coinDataService: CoinDataService = CoinDataService(),
+        marketDataService: MarketDataService = MarketDataService()
+        
     ) {
-        self.dataService = dataService
+        self.coinDataService = coinDataService
+        self.marketDataService = marketDataService
         addSubscribers()
     }
     
     
     func addSubscribers() {
-        dataService.$allCoins
+        marketDataService.getData()
+            .map(mapGlobalMarketData)
+            .sink { [weak self] in
+                self?.statistics = $0
+            }
+            .store(in: &cancellables)
+        
+        coinDataService.getCoins()
             .sink { [weak self] in
                 self?.allCoins = $0
             }
             .store(in: &cancellables)
-      
+        
+        // TODO: - Fix search placeholder
         $searchText
-            .combineLatest(dataService.$allCoins)
+            .combineLatest($allCoins)
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .map(filterCoins)
             .sink { [weak self] in
                 self?.allCoins = $0
             }
             .store(in: &cancellables)
+    }
+    
+    private func mapGlobalMarketData(data: MarketDataModel) -> [StatisticModel] {
+        [
+            StatisticModel(
+                title: "Market Cap",
+                value: data.marketCap,
+                percentageChange: data.marketCapChangePercentage24HUsd
+            ),
+            StatisticModel(
+                title: "24h Volume",
+                value: data.volume
+            ),
+            StatisticModel(
+                title: "BTC Dominance",
+                value: data.btcDominance
+            ),
+            StatisticModel(
+                title: "Portfolio Value",
+                value: "$0.00",
+                percentageChange: 0
+            )
+        ]
     }
     
     private func filterCoins(text: String, coins: [CoinModel]) -> [CoinModel] {
