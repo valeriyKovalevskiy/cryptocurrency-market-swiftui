@@ -20,7 +20,21 @@ final class DeveloperPreview {
     private init() { }
 
     let homeViewModel = HomeViewModel()
-    
+    let staticticModel1 = StatisticModel(
+        title: "Market Cap",
+        value: "$12.5Bn",
+        percentageChange: 25.34
+    )
+    let staticticModel2 = StatisticModel(
+        title: "Total Volume",
+        value: "$1.23Tr"
+    )
+    let staticticModel3 = StatisticModel(
+        title: "Portfolio Value",
+        value: "$12.5Bn",
+        percentageChange: -25.34
+    )
+
     let coin = CoinModel(
         id: "bitcoin",
         symbol: "btc",
