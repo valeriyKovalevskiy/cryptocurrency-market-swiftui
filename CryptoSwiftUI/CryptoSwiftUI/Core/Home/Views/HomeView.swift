@@ -11,22 +11,26 @@ struct HomeView: View {
     
     @EnvironmentObject private var viewModel: HomeViewModel
     @State private var showPortfolio: Bool = false
+    @State private var showPortfolioView: Bool = false
     
     var body: some View {
         ZStack {
             // backgroud layer
             Color.theme.background
                 .ignoresSafeArea()
-            
+                .sheet(isPresented: $showPortfolioView) {
+                    PortfolioView()
+                        .environmentObject(viewModel)
+                }
             // content layer
             VStack {
                 homeHeader
                 HomeStatsView(showPortfolio: $showPortfolio)
                 SearchBarView(searchText: $viewModel.searchText)
                 columnTitles
-                .font(.caption)
-                .foregroundColor(Color.theme.secondaryText)
-                .padding(.horizontal)
+                    .font(.caption)
+                    .foregroundColor(Color.theme.secondaryText)
+                    .padding(.horizontal)
                 
                 if !showPortfolio {
                     allCoinsList
@@ -48,6 +52,11 @@ extension HomeView {
         HStack {
             CircleButtonView(iconName: showPortfolio ? "plus" : "info")
                 .animation(.none)
+                .onTapGesture {
+                    if showPortfolio {
+                        showPortfolioView.toggle()
+                    }
+                }
                 .background(
                     CircleButtonAnimationView(animate: $showPortfolio)
                 )
@@ -76,14 +85,14 @@ extension HomeView {
                     coin: coin,
                     showHoldingsColumn: false
                 )
-                .listRowInsets(
-                    .init(
-                        top: 10,
-                        leading: 0,
-                        bottom: 10,
-                        trailing: 10
+                    .listRowInsets(
+                        .init(
+                            top: 10,
+                            leading: 0,
+                            bottom: 10,
+                            trailing: 10
+                        )
                     )
-                )
             }
         }
         .listStyle(PlainListStyle())
@@ -96,19 +105,19 @@ extension HomeView {
                     coin: coin,
                     showHoldingsColumn: true
                 )
-                .listRowInsets(
-                    .init(
-                        top: 10,
-                        leading: 0,
-                        bottom: 10,
-                        trailing: 10
+                    .listRowInsets(
+                        .init(
+                            top: 10,
+                            leading: 0,
+                            bottom: 10,
+                            trailing: 10
+                        )
                     )
-                )
             }
         }
         .listStyle(PlainListStyle())
     }
-
+    
     private var columnTitles: some View {
         HStack {
             Text("Coin")
