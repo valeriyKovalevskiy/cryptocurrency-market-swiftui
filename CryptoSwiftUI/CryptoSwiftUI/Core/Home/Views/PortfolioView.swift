@@ -36,8 +36,12 @@ struct PortfolioView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     trailingNavBarButton
                 }
+            })
+            .onChange(of: viewModel.searchText) { newValue in
+                if newValue.isEmpty {
+                    removeSelectedCoin()
+                }
             }
-            )
         }
     }
 }
