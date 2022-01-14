@@ -9,26 +9,28 @@ import Foundation
 import Combine
 
 protocol MarketDataServiceType {
-  func getData() -> AnyPublisher<MarketDataModel, Never>
+  func getData()
 }
 
 final class MarketDataService: MarketDataServiceType {
   private var cancellables = Set<AnyCancellable>()
-  
-  func getData() -> AnyPublisher<MarketDataModel, Never> {
+  var dataSubscription: AnyCancellable?
+  @Published var marketData: MarketDataModel = .init(totalMarketCap: [:], totalVolume: [:], marketCapPercentage: [:], marketCapChangePercentage24HUsd: 0.0)
+  init() {
+    getData()
+  }
+  func getData() {
     let url = URL(string: "https://api.coingecko.com/api/v3/global")!
-    return Future<MarketDataModel, Never> { [unowned self] promise in
-      NetworkingManager.download(url: url)
-        .decode(type: GlobalData.self, decoder: JSONDecoder())
-        .compactMap { $0.data }
-        .sink(
-          receiveCompletion: NetworkingManager.handleCompletion,
-          receiveValue: {
-            promise(.success($0))
-          }
-        )
-        .store(in: &cancellables)
-    }
-    .eraseToAnyPublisher()
+    
+    dataSubscription = NetworkingManager.download(url: url)
+      .decode(type: GlobalData.self, decoder: JSONDecoder())
+      .compactMap { $0.data }
+      .sink(
+        receiveCompletion: NetworkingManager.handleCompletion,
+        receiveValue: { [weak self] model in
+          self?.marketData = model
+          self?.dataSubscription?.cancel()
+        }
+      )
   }
 }
