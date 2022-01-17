@@ -35,12 +35,14 @@ struct DetailView: View {
     
     print("initializing detail view for \(coin.name)")
   }
-
+  
   var body: some View {
-      ScrollView {
+    ScrollView {
+      VStack {
+        ChartView(coin: viewModel.coin)
+          .padding(.vertical)
+        
         VStack(spacing: 20) {
-          Text("")
-            .frame(height: 150)
           overviewTitle
           Divider()
           overviewGrid
@@ -50,11 +52,27 @@ struct DetailView: View {
         }
         .padding()
       }
-      .navigationTitle(viewModel.coin.name)
+    }
+    .navigationTitle(viewModel.coin.name)
+    .toolbar {
+      ToolbarItem(placement: .navigationBarTrailing) {
+        navigationBarTrailingItems
+      }
+    }
   }
 }
 
 extension DetailView {
+  private var navigationBarTrailingItems: some View {
+    HStack {
+      Text(viewModel.coin.symbol.uppercased())
+        .font(.headline)
+        .foregroundColor(Color.theme.secondaryText)
+      CoinImageView(coin: viewModel.coin)
+        .frame(width: 25, height: 25)
+    }
+  }
+  
   private var overviewTitle: some View {
     Text("Overview")
       .font(.title)
