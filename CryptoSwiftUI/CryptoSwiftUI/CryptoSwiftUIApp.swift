@@ -24,6 +24,7 @@ struct CryptoSwiftUIApp: App {
           HomeView()
             .navigationBarHidden(true)
         }
+        .navigationViewStyle(.stack)  // force iPad use same navigation as iPhone
         .environmentObject(viewModel)
         
         ZStack {

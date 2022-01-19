@@ -10,13 +10,7 @@ extension URLSession.DataTaskPublisher {
             subsystem: Bundle.main.bundleIdentifier!,
             category: "[Network]"
         )
-        os_log(
-            """
-            \n
-            <- Beginning of cURL
-            %@
-            <- Ending of cURL
-            """,
+        os_log("%@\n",
             log: log,
             request.cURLString()
         )
